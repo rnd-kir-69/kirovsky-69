@@ -11,7 +11,7 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 24px; }
-body { margin: 0; background: #fff; color: var(--ink); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: #f7f9fc; color: var(--ink); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 svg { flex: none; }
 .container { width: min(calc(100% - 64px), var(--page-width)); margin-inline: auto; }
@@ -34,11 +34,23 @@ svg { flex: none; }
 .hero__dot { margin-left: .05em; }
 .hero p { margin: 0; font-size: clamp(18px, 2vw, 24px); font-weight: 500; line-height: 1.42; }
 .hero__accent { display: block; width: 92px; height: 5px; margin-top: 25px; border-radius: 5px; background: var(--orange); }
-.content { padding-block: 30px 42px; }
+/* Разделение публикаций на самостоятельные информационные блоки. */
+.content { padding-block: 32px 46px; }
+.info-card { padding: clamp(23px, 3.3vw, 39px); border: 1px solid #dbe5f2; border-radius: 20px; background: rgba(255, 255, 255, .96); box-shadow: 0 8px 25px rgba(19, 45, 84, .055), 0 2px 5px rgba(19, 45, 84, .035); }
+.info-card + .info-card { margin-top: 24px; }
+.info-card--about { background: linear-gradient(130deg, rgba(236, 245, 255, .91), rgba(249, 252, 255, .94)); border-color: #d2e1f4; }
+.info-card__title, .intro h2 { position: relative; padding-left: 21px; }
+.info-card__title::before, .intro h2::before { content: ''; position: absolute; left: 0; top: .07em; bottom: .07em; width: 5px; background: var(--orange); border-radius: 6px; }
+.info-card__title { margin: 0 0 17px; color: var(--navy-deep); font-size: clamp(25px, 3vw, 36px); font-weight: 800; line-height: 1.15; letter-spacing: -.55px; }
+.info-card__text p { margin: 0 0 14px; font-size: clamp(16px, 1.55vw, 19px); line-height: 1.55; }
+.info-card__text p:last-child { margin-bottom: 0; }
+.info-card__text a { color: var(--navy); font-weight: 700; text-decoration-color: var(--orange); text-decoration-thickness: 1.5px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.info-card__text a:hover { color: #d65b1d; }
+
 .intro h2 { margin: 0 0 15px; color: var(--navy-deep); font-size: clamp(27px, 3.3vw, 42px); font-weight: 800; letter-spacing: -.6px; line-height: 1.15; }
 .intro p { margin: 0 0 22px; font-size: clamp(17px, 1.65vw, 20px); line-height: 1.5; }
 .fact { border-top: 1.5px solid var(--orange); padding: 20px 0 19px; }
-.fact h2 { margin: 0 0 8px; color: var(--navy-deep); font-size: clamp(20px, 2.1vw, 24px); font-weight: 800; line-height: 1.23; letter-spacing: -.28px; text-transform: uppercase; }
+.fact h3 { margin: 0 0 8px; color: var(--navy-deep); font-size: clamp(20px, 2.1vw, 24px); font-weight: 800; line-height: 1.23; letter-spacing: -.28px; text-transform: uppercase; }
 .fact__number { white-space: nowrap; }
 .fact__body p { margin: 0 0 12px; font-size: clamp(16px, 1.45vw, 18px); line-height: 1.52; }
 .fact__body p:last-child { margin-bottom: 0; }
@@ -47,7 +59,7 @@ svg { flex: none; }
 .context-note p { margin: 0; }
 .key-question { margin-top: 10px; display: grid; grid-template-columns: 5px minmax(0, 1fr); gap: 25px; padding: 25px 31px; background: linear-gradient(110deg,#fff2ea 0%,#ffebe0 100%); border-radius: 17px; }
 .key-question__accent { border-radius: 5px; background: var(--orange); }
-.key-question h2 { margin: 0 0 10px; color: var(--navy-deep); font-size: clamp(22px, 2.4vw, 29px); line-height: 1.2; }
+.key-question h3 { margin: 0 0 10px; color: var(--navy-deep); font-size: clamp(22px, 2.4vw, 29px); line-height: 1.2; }
 .key-question p { margin: 0; font-size: clamp(16px, 1.45vw, 18px); line-height: 1.5; }
 .contacts { background: linear-gradient(107deg, #122f5d 0%, #081d41 100%); color: #fff; }
 .contacts__inner { min-height: 120px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
@@ -78,14 +90,19 @@ svg { flex: none; }
   .hero h1 { max-width: 310px; font-size: clamp(23px, 5vw, 31px); margin-bottom: 16px; }
   .hero p { font-size: clamp(16px, 3.4vw, 20px); }
   .hero__accent { margin-top: 17px; height: 4px; width: 71px; }
-  .content { padding-block: 25px 30px; }
+  .content { padding-block: 26px 32px; }
+  .info-card { padding: 24px; border-radius: 17px; }
+  .info-card + .info-card { margin-top: 20px; }
+  .info-card__title { font-size: clamp(24px, 5.4vw, 30px); }
+  .info-card__text p { font-size: 16px; }
+
   .intro h2 { font-size: clamp(25px, 6vw, 33px); }
   .intro p { font-size: 16px; }
   .fact { padding-block: 17px; }
-  .fact h2 { font-size: clamp(19px, 4.2vw, 22px); }
+  .fact h3 { font-size: clamp(19px, 4.2vw, 22px); }
   .fact__body p { font-size: 16px; }
   .key-question { padding: 19px; gap: 17px; }
-  .key-question h2 { font-size: 22px; }
+  .key-question h3 { font-size: 22px; }
   .key-question p { font-size: 16px; }
   .contacts__inner { padding-block: 20px; flex-wrap: wrap; align-items: flex-start; }
   .contacts__heading { width: 100%; }
@@ -104,15 +121,22 @@ svg { flex: none; }
   .hero__veil { background: linear-gradient(90deg, rgba(23,94,187,.95) 0%, rgba(32,109,201,.86) 33%, rgba(47,129,208,.25) 85%); }
   .hero h1 { font-size: clamp(22px, 5.75vw, 27px); max-width: 295px; }
   .hero p { font-size: 16px; }
-  .content { padding-block: 21px 26px; }
+  .content { padding-block: 18px 28px; }
+  .info-card { padding: 20px 16px 21px; border-radius: 14px; }
+  .info-card + .info-card { margin-top: 16px; }
+  .info-card__title { font-size: clamp(22px, 6vw, 27px); margin-bottom: 13px; }
+  .info-card__title, .intro h2 { padding-left: 16px; }
+  .info-card__title::before, .intro h2::before { width: 4px; }
+  .info-card__text p { font-size: 15.5px; margin-bottom: 12px; }
+
   .intro h2 { font-size: clamp(25px, 6.7vw, 31px); line-height: 1.15; margin-bottom: 11px; }
   .intro p { font-size: 15.5px; line-height: 1.48; margin-bottom: 18px; }
-  .fact h2 { font-size: 19px; }
+  .fact h3 { font-size: 19px; }
   .fact__body p { font-size: 15.5px; }
   .context-note { padding: 13px 14px; }
   .context-note h3 { font-size: 16px; }
   .key-question { border-radius: 13px; padding: 18px 15px; gap: 12px; grid-template-columns: 4px 1fr; }
-  .key-question h2 { font-size: 20px; }
+  .key-question h3 { font-size: 20px; }
   .key-question p { font-size: 15.5px; }
   .contacts__inner { display: grid; grid-template-columns: 1fr; gap: 17px; padding-block: 19px 25px; }
   .contacts__heading, .contacts__item { font-size: 15px; }
